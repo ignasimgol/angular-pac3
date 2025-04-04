@@ -1,0 +1,32 @@
+.posts-container {
+  padding: 20px;
+  margin: 20px;
+}
+
+.action-button-container {
+  margin-bottom: 20px;
+}
+
+.full-width-table {
+  width: 100%;
+}
+
+.description-cell {
+  max-width: 300px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.likes-container, .dislikes-container {
+  display: flex;
+  align-items: center;
+  
+  mat-icon {
+    margin-right: 5px;
+  }
+}
+
+mat-paginator {
+  margin-top: 20px;
+}

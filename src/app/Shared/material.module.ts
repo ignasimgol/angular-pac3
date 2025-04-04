@@ -38,6 +38,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTableModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatDialogModule,
   ]
 })
 export class MaterialModule { }
