@@ -31,7 +31,7 @@ export class PostFormComponent implements OnInit {
   postForm: FormGroup;
   isValidForm: boolean | null;
 
-  private isUpdateMode: boolean;
+  isUpdateMode: boolean; // Changed from private to public
   private postId: string | null;
 
   categoriesList!: CategoryDTO[];

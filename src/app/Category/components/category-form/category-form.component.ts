@@ -25,9 +25,9 @@ export class CategoryFormComponent implements OnInit {
   categoryForm: FormGroup;
   isValidForm: boolean | null;
 
-  private isUpdateMode: boolean;
-  private categoryId: string | null;
+  isUpdateMode: boolean; // Changed from private to public
 
+  private categoryId: string | null;
   private userId: string;
 
   constructor(

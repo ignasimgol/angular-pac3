@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '../Shared/material.module';
 import { FormatDatePipe } from '../Shared/Pipes/format-date.pipe';
 import { HomeComponent } from './components/home/home.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
@@ -15,6 +16,6 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     FormatDatePipe,
     DashboardComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, MaterialModule],
 })
 export class PostModule {}
