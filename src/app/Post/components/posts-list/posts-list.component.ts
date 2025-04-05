@@ -17,6 +17,7 @@ import { ConfirmDialogComponent } from 'src/app/Shared/Components/confirm-dialog
 export class PostsListComponent implements OnInit {
   dataSource: MatTableDataSource<PostDTO>;
   displayedColumns: string[] = ['id', 'title', 'description', 'likes', 'dislikes', 'actions'];
+  loading = false;
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   
@@ -38,6 +39,7 @@ export class PostsListComponent implements OnInit {
     
     this.store.select('posts').subscribe((posts) => {
       this.dataSource.data = posts.posts;
+      this.loading = posts.loading;
     });
   }
   

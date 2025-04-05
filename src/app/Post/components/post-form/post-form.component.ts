@@ -37,6 +37,7 @@ export class PostFormComponent implements OnInit {
   categoriesList!: CategoryDTO[];
 
   private userId: string;
+  loading = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -90,6 +91,7 @@ export class PostFormComponent implements OnInit {
     });
 
     this.store.select('posts').subscribe((posts) => {
+      this.loading = posts.loading;
       this.post = posts.post;
 
       this.title.setValue(this.post.title);
