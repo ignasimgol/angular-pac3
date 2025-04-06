@@ -1,0 +1,35 @@
+.toolbar-container {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.app-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.menu-section {
+  display: flex;
+  align-items: center;
+  
+  button {
+    margin-left: 8px;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-section button span {
+    display: none;
+  }
+}

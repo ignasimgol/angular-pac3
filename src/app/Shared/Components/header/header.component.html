@@ -1,19 +1,72 @@
-<p>header works!</p>
-
-<!-- NO AUTH REQUIRED -->
-<div *ngIf="showNoAuthSection">
-  <button (click)="dashboard()">Dashboard</button>
-  <button (click)="home()">Home</button>
-  <button (click)="login()">Login</button>
-  <button (click)="register()">Register</button>
-</div>
-
-<!-- AUTH REQUIRED -->
-<div *ngIf="showAuthSection">
-  <button (click)="dashboard()">Dashboard</button>
-  <button (click)="home()">Home</button>
-  <button (click)="adminPosts()">Admin posts</button>
-  <button (click)="adminCategories()">Admin categories</button>
-  <button (click)="profile()">Profile</button>
-  <button (click)="logout()">Logout</button>
-</div>
+<mat-toolbar color="primary">
+  <div class="toolbar-container">
+    <div class="logo-section">
+      <button mat-button (click)="home()">
+        <span class="app-title">Blog UOC</span>
+      </button>
+    </div>
+    
+    <div class="spacer"></div>
+    
+    <div class="menu-section">
+      <!-- No Auth Section -->
+      <div *ngIf="showNoAuthSection">
+        <button mat-button (click)="login()">
+          <mat-icon>login</mat-icon>
+          <span>Login</span>
+        </button>
+      </div>
+      
+      <!-- Auth Section -->
+      <div *ngIf="showAuthSection">
+        <button mat-button (click)="dashboard()">
+          <mat-icon>dashboard</mat-icon>
+          <span>Dashboard</span>
+        </button>
+        
+        <!-- Line 27: Change property binding -->
+        <button mat-button [matMenuTriggerFor]="categoriesMenu">
+          <mat-icon>category</mat-icon>
+          <span>Categories</span>
+        </button>
+        
+        <!-- Line 42: Change property binding -->
+        <button mat-button [matMenuTriggerFor]="postsMenu">
+          <mat-icon>article</mat-icon>
+          <span>Posts</span>
+        </button>
+        <mat-menu #categoriesMenu="matMenu">
+          <button mat-menu-item (click)="router.navigateByUrl('/user/categories')">
+            <mat-icon>list</mat-icon>
+            <span>List Categories</span>
+          </button>
+          <button mat-menu-item (click)="router.navigateByUrl('/user/category')">
+            <mat-icon>add</mat-icon>
+            <span>Add Category</span>
+          </button>
+        </mat-menu>
+        
+        <!-- Add this menu structure after the categories menu -->
+        <mat-menu #postsMenu="matMenu">
+          <button mat-menu-item (click)="router.navigateByUrl('/user/posts')">
+            <mat-icon>list</mat-icon>
+            <span>List Posts</span>
+          </button>
+          <button mat-menu-item (click)="router.navigateByUrl('/user/post')">
+            <mat-icon>add</mat-icon>
+            <span>Add Post</span>
+          </button>
+        </mat-menu>
+        <button mat-button (click)="profile()">
+          <mat-icon>person</mat-icon>
+          <span>Profile</span>
+        </button>
+        
+        <button mat-button (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Logout</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</mat-toolbar>

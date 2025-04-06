@@ -14,19 +14,24 @@ import { AuthModule } from './Auth/auth.module';
 import { CategoryModule } from './Category/category.module';
 import { PostModule } from './Post/post.module';
 import { FooterComponent } from './Shared/Components/footer/footer.component';
-import { HeaderComponent } from './Shared/Components/header/header.component';
+import { HeaderModule } from './Shared/Components/header/header.module';
 import { AuthInterceptorService } from './Shared/Services/auth-interceptor.service';
 import { UserModule } from './User/user.module';
+import { MaterialModule } from './Shared/material.module';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
-
+  declarations: [
+    AppComponent,
+    FooterComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MaterialModule,
+    HeaderModule, // Make sure this is before other feature modules
     AuthModule,
     UserModule,
     CategoryModule,
@@ -42,6 +47,7 @@ import { UserModule } from './User/user.module';
       maxAge: 25,
       logOnly: environment.production,
     }),
+    HeaderModule,
   ],
   providers: [
     {
@@ -52,4 +58,4 @@ import { UserModule } from './User/user.module';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
