@@ -37,6 +37,19 @@ const routes: Routes = [
     component: PostsListComponent,
     canActivate: [AuthGuard],
   },
+  // Add route for user's posts list
+  {
+    path: 'user/posts',
+    component: PostsListComponent,
+    canActivate: [AuthGuard],
+  },
+  // Add a route for creating a new post (without ID)
+  {
+    path: 'user/post',
+    component: PostFormComponent,
+    canActivate: [AuthGuard],
+  },
+  // Keep the existing route for editing a post (with ID)
   {
     path: 'user/post/:id',
     component: PostFormComponent,
@@ -47,6 +60,13 @@ const routes: Routes = [
     component: CategoriesListComponent,
     canActivate: [AuthGuard],
   },
+  // Add a route for creating a new category (without ID)
+  {
+    path: 'user/category',
+    component: CategoryFormComponent,
+    canActivate: [AuthGuard],
+  },
+  // Keep the existing route for editing a category (with ID)
   {
     path: 'user/category/:id',
     component: CategoryFormComponent,
