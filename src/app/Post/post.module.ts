@@ -9,21 +9,23 @@ import { PostFormComponent } from './components/post-form/post-form.component';
 import { PostsListComponent } from './components/posts-list/posts-list.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RouterModule } from '@angular/router';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
+  imports: [
+    CommonModule, 
+    ReactiveFormsModule, 
+    MaterialModule,
+    SharedModule,
+    RouterModule,
+    ChartsModule
+  ],
   declarations: [
     PostsListComponent,
     PostFormComponent,
     HomeComponent,
     FormatDatePipe,
     DashboardComponent,
-  ],
-  imports: [
-    CommonModule, 
-    ReactiveFormsModule, 
-    MaterialModule,
-    SharedModule,
-    RouterModule
   ],
 })
 export class PostModule { }
