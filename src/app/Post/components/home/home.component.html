@@ -6,6 +6,7 @@
       <mat-card-header>
         <mat-card-title>{{ post.title }}</mat-card-title>
         <mat-card-subtitle>
+          <div class="author">Posted by: {{ post.userAlias }}</div>
           <div class="category-badges">
             <span 
               *ngFor="let category of post.categories" 
@@ -24,15 +25,23 @@
       
       <mat-card-actions>
         <div class="action-buttons">
+          <div class="post-stats">
+            <span class="stat-item">
+              <mat-icon>thumb_up</mat-icon>
+              {{ post.num_likes }}
+            </span>
+            <span class="stat-item">
+              <mat-icon>thumb_down</mat-icon>
+              {{ post.num_dislikes }}
+            </span>
+          </div>
           <div class="interaction-buttons" *ngIf="showButtons">
             <button mat-icon-button color="accent" (click)="like(post.postId)" aria-label="Like post">
               <mat-icon>thumb_up</mat-icon>
-              <span class="like-count" *ngIf="post.num_likes">{{ post.num_likes }}</span>
             </button>
             
             <button mat-icon-button color="warn" (click)="dislike(post.postId)" aria-label="Dislike post">
               <mat-icon>thumb_down</mat-icon>
-              <span class="dislike-count" *ngIf="post.num_dislikes">{{ post.num_dislikes }}</span>
             </button>
           </div>
         </div>
