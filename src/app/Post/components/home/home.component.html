@@ -4,6 +4,7 @@
   <div class="posts-grid" [@listAnimation]="posts.length">
     <mat-card *ngFor="let post of posts" class="post-card" [@cardAnimation]>
       <mat-card-header>
+        <div mat-card-avatar class="post-avatar"></div>
         <mat-card-title>{{ post.title }}</mat-card-title>
         <mat-card-subtitle>
           <div class="author">Posted by: {{ post.userAlias }}</div>
