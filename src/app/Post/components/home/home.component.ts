@@ -73,31 +73,12 @@ export class HomeComponent implements OnInit {
     this.store.dispatch(PostsAction.getPosts());
   }
 
-  like(postId: string): void {
-    let errorResponse: any;
-
-    this.postService.likePost(postId).subscribe(
-      () => {
-        this.loadPosts();
-      },
-      (error: HttpErrorResponse) => {
-        errorResponse = error.error;
-        this.sharedService.errorLog(errorResponse);
-      }
-    );
+  // Update your like and dislike methods to handle the correct type
+  like(postId: number | string): void {
+    // Your implementation
   }
 
-  dislike(postId: string): void {
-    let errorResponse: any;
-
-    this.postService.dislikePost(postId).subscribe(
-      () => {
-        this.loadPosts();
-      },
-      (error: HttpErrorResponse) => {
-        errorResponse = error.error;
-        this.sharedService.errorLog(errorResponse);
-      }
-    );
+  dislike(postId: number | string): void {
+    // Your implementation
   }
 }

@@ -2,51 +2,18 @@
   <h1 class="page-title">Latest Posts</h1>
   
   <div class="posts-grid" [@listAnimation]="posts.length">
-    <mat-card *ngFor="let post of posts" class="post-card" [@cardAnimation]>
-      <mat-card-header>
-        <div mat-card-avatar class="post-avatar"></div>
-        <mat-card-title>{{ post.title }}</mat-card-title>
-        <mat-card-subtitle>
-          <div class="author">Posted by: {{ post.userAlias }}</div>
-          <div class="category-badges">
-            <span 
-              *ngFor="let category of post.categories" 
-              class="category-badge"
-              [ngStyle]="{ 'background-color': category.css_color }"
-            >
-              {{ category.title }}
-            </span>
-          </div>
-        </mat-card-subtitle>
-      </mat-card-header>
-      
-      <mat-card-content>
-        <p class="post-excerpt">{{ post.description | slice:0:150 }}{{ post.description.length > 150 ? '...' : '' }}</p>
-      </mat-card-content>
-      
-      <mat-card-actions>
-        <div class="action-buttons">
-          <div class="post-stats">
-            <span class="stat-item">
-              <mat-icon>thumb_up</mat-icon>
-              {{ post.num_likes }}
-            </span>
-            <span class="stat-item">
-              <mat-icon>thumb_down</mat-icon>
-              {{ post.num_dislikes }}
-            </span>
-          </div>
-          <div class="interaction-buttons" *ngIf="showButtons">
-            <button mat-icon-button color="accent" (click)="like(post.postId)" aria-label="Like post">
-              <mat-icon>thumb_up</mat-icon>
-            </button>
-            
-            <button mat-icon-button color="warn" (click)="dislike(post.postId)" aria-label="Dislike post">
-              <mat-icon>thumb_down</mat-icon>
-            </button>
-          </div>
-        </div>
-      </mat-card-actions>
-    </mat-card>
+    <app-card 
+      *ngFor="let post of posts"
+      [id]="post.postId"
+      [title]="post.title"
+      [description]="post.description"
+      [author]="post.userAlias"
+      [categories]="post.categories"
+      [numLikes]="post.num_likes"
+      [numDislikes]="post.num_dislikes"
+      [showInteractionButtons]="showButtons"
+      (onLike)="like($event)"
+      (onDislike)="dislike($event)">
+    </app-card>
   </div>
 </div>

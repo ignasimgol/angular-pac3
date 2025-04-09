@@ -77,6 +77,12 @@ const routes: Routes = [
     component: ProfileComponent,
     canActivate: [AuthGuard],
   },
+  // Add the correct route for categories list
+  {
+    path: 'user/categories',
+    component: CategoriesListComponent,
+    canActivate: [AuthGuard],
+  }
 ];
 
 @NgModule({
