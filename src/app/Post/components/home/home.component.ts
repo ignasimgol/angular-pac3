@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar'; // Add this import
 import { PostDTO } from '../../models/post.dto';
 import { PostService } from '../../services/post.service';
 import { SharedService } from '../../../Shared/Services/shared.service';
@@ -43,7 +44,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private postService: PostService,
     private sharedService: SharedService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private snackBar: MatSnackBar // Add this
   ) {
     this.userId = '';
     this.posts = new Array<PostDTO>();
@@ -73,12 +75,25 @@ export class HomeComponent implements OnInit {
     this.store.dispatch(PostsAction.getPosts());
   }
 
-  // Update your like and dislike methods to handle the correct type
   like(postId: number | string): void {
-    // Your implementation
+    if (this.userId) {
+      this.store.dispatch(PostsAction.likePost({ postId: postId.toString() }));
+    } else {
+      this.snackBar.open('You must be logged in to like posts', 'Close', {
+        duration: 3000,
+        panelClass: ['error-snackbar']
+      });
+    }
   }
 
   dislike(postId: number | string): void {
-    // Your implementation
+    if (this.userId) {
+      this.store.dispatch(PostsAction.dislikePost({ postId: postId.toString() }));
+    } else {
+      this.snackBar.open('You must be logged in to dislike posts', 'Close', {
+        duration: 3000,
+        panelClass: ['error-snackbar']
+      });
+    }
   }
 }
